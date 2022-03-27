@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
@@ -16,9 +17,11 @@ const Home: NextPage = () => {
             <div className="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">Parse those pesky bank statements with a click, Export them to a clean CSV file</div>
             <div className="flex flex-col items-center mt-12 text-center">
                 <span className="relative inline-flex w-full md:w-auto">
-                    <a href="#_" type="button" className="inline-flex items-center justify-center w-full px-6 py-2 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                    <Link href={'/dash'}>
+                    <a type="button" className="inline-flex items-center justify-center w-full px-6 py-2 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
                         Get Started
                     </a>
+                    </Link>
                 </span>
             </div>
         </div>
