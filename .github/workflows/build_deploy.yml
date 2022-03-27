@@ -16,7 +16,10 @@ jobs:
           yarn install
           yarn run build
           yarn run export
-
+          
+      - name: Add .nojekyll file to serve static files on gh
+        run: touch ./out/.nojekyll
+        
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
