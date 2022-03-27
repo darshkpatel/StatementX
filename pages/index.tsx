@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Image from 'next/image'
 
 const Home: NextPage = () => {
   return (
@@ -25,7 +24,7 @@ const Home: NextPage = () => {
         </div>
     </div>
     <div  className={"hidden md:block w-1/3 h-1/3 absolute bottom-0 right-10"}>
-    <Image src={"/payments.svg"} layout={"fill"} />
+    <img src={"/payments.svg"} />
     </div>
 </section>
 
