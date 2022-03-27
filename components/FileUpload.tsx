@@ -83,7 +83,7 @@ const FileUpload: NextPage = () => {
                     <div className="mx-auto -mt-10 flex max-h-48 w-2/5 flex-auto">
                       <img
                         className="has-mask h-36 object-center"
-                        src="/upload.svg"
+                        src={`${process.env.NEXT_PUBLIC_ASSET_PREFIX}upload.svg`}
                         alt="upload illustration"
                       />
                     </div>

@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/StatementX',
+    NEXT_PUBLIC_ASSET_PREFIX: '/StatementX/',
+  },
   reactStrictMode: true,
-    basePath: '/StatementX',
-    assetPrefix: '/StatementX/',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+  assetPrefix: process.env.NEXT_PUBLIC_ASSET_PREFIX
 }

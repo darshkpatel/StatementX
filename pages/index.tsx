@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         </div>
     </div>
     <div  className={"hidden md:block w-1/3 h-1/3 absolute bottom-0 right-10"}>
-    <img src={"/payments.svg"} />
+    <img src={`${process.env.NEXT_PUBLIC_ASSET_PREFIX}payments.svg`} />
     </div>
 </section>
 
