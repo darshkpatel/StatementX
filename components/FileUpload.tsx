@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { SetStateAction, useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import type { NextPage } from 'next'
 import Link from 'next/link'
@@ -6,7 +6,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import ErrorMessage from './ErrorMessage'
 import { getPdfTextFromBlob } from '../util/pdf'
 
-const FileUpload: React.FC<{}> = ({}) => {
+const FileUpload: React.FC<{setPDFText: Function}> = ({setPDFText}) => {
   const [files, setFiles] = useState([]);
   const [reqError, setReqError] = useState();
   const {
@@ -29,7 +29,7 @@ const FileUpload: React.FC<{}> = ({}) => {
   function onSubmit(data: FieldValues) {
     setReqError(undefined);
     getPdfTextFromBlob(files[0], data.password)
-    .then((text) => {console.log(text)})
+    .then((text) => {setPDFText(text)})
     .catch((err) => {setReqError(err.message)})
   }
   return (
