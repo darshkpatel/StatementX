@@ -6,7 +6,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import ErrorMessage from './ErrorMessage'
 import { getPdfTextFromBlob } from '../util/pdf'
 
-const FileUpload: NextPage = () => {
+const FileUpload: React.FC<{}> = ({}) => {
   const [files, setFiles] = useState([]);
   const [reqError, setReqError] = useState();
   const {
@@ -27,13 +27,10 @@ const FileUpload: NextPage = () => {
   })
 
   function onSubmit(data: FieldValues) {
-    const formData = new FormData()
-    formData.append('statement', files[0])
-    formData.append('password', data.password)
-    // fetch('/api/process', { body: formData, method: 'POST' }).catch((err) =>
-    //   setReqError(err.message)
-    // )
-    getPdfTextFromBlob(files[0]).then((text) => {console.log(text)}).catch((err) => {console.log(err)})
+    setReqError(undefined);
+    getPdfTextFromBlob(files[0], data.password)
+    .then((text) => {console.log(text)})
+    .catch((err) => {setReqError(err.message)})
   }
   return (
     <>
@@ -59,7 +56,7 @@ const FileUpload: NextPage = () => {
             </label>
             <input
               className="rounded-lg border border-gray-300 p-2 text-base focus:border-indigo-600 focus:outline-none"
-              type=""
+              type="password"
               placeholder="PDF's Password"
               {...register('password')}
             />

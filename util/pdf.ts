@@ -4,10 +4,10 @@ import type { PDFDocumentProxy } from 'pdfjs-dist/types/web/pdf_find_controller'
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.js`;
 
 
-export const getPdfTextFromBlob = async (blob: File):Promise<string[]> => {
+export const getPdfTextFromBlob = async (blob: File, password:string):Promise<string[]> => {
     const dataURI = await blobToDataURL(blob);
     const binary = await convertDataURIToBinary(dataURI);
-    return await getPdfText(binary);
+    return await getPdfText(binary, password);
 }
 
 const blobToDataURL = (blob:Blob):Promise<string> => {
@@ -60,9 +60,10 @@ const convertDataURIToBinary = (dataURI: string): Uint8Array => {
       });
   }
 
-  function getPdfText(pdfAsArray: Uint8Array):Promise<string[]> {
+  function getPdfText(pdfAsArray: Uint8Array, password:string):Promise<string[]> {
     return new Promise((resolve,reject) => {
-    pdfjsLib.getDocument(pdfAsArray).promise.then(function (pdf) {
+        console.log(password)
+    pdfjsLib.getDocument({data:pdfAsArray, password}).promise.then(function (pdf) {
 
           var pdfDocument = pdf;
           // Create an array that will contain our promises
@@ -86,6 +87,7 @@ const convertDataURIToBinary = (dataURI: string): Uint8Array => {
 
       }, function (reason) {
           // PDF loading error
+          console.error(reason);
           reject(reason);
       });
     })
