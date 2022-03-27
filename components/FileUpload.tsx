@@ -4,6 +4,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { FieldValues, useForm } from 'react-hook-form'
 import ErrorMessage from './ErrorMessage'
+import { getPdfTextFromBlob } from '../util/pdf'
 
 const FileUpload: NextPage = () => {
   const [files, setFiles] = useState([]);
@@ -29,11 +30,11 @@ const FileUpload: NextPage = () => {
     const formData = new FormData()
     formData.append('statement', files[0])
     formData.append('password', data.password)
-    fetch('/api/process', { body: formData, method: 'POST' }).catch((err) =>
-      setReqError(err.message)
-    )
+    // fetch('/api/process', { body: formData, method: 'POST' }).catch((err) =>
+    //   setReqError(err.message)
+    // )
+    getPdfTextFromBlob(files[0]).then((text) => {console.log(text)}).catch((err) => {console.log(err)})
   }
-
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
