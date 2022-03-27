@@ -14,7 +14,7 @@ const Dashboard: NextPage = () => {
   return (
     <div className='flex flex-row justify-center'>
     {!pdfText && <FileUpload setPDFText={setPdfText}/> }
-    {pdfText && <StatementTable data={pdfText}/> }
+    {pdfText && <StatementTable data={getTransactionData(pdfText)}/> }
     </div>
   );
 }
