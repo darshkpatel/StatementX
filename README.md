@@ -15,3 +15,8 @@
 ## Inspiration
 I wanted to track my expenses and tried to export my HDFC Credit Card statement, but they only offer exporting to PDF which isn't helpful for importing it to other places. I wanted a pet project, and this seemed like a perfect excuse to build one :wink:
 
+## Screenshots
+
+<img src=".github/readme_assets/s2.png">
+<img src=".github/readme_assets/s1.png">
+<img src=".github/readme_assets/s3.png">
